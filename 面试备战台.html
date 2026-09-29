@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数据分析 · 面试备战台</title>
+<style>
+:root { --ink:#1e4d7b; --ink2:#2f6f6a; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: #fff; color: #333;
+  font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px; line-height: 1.85;
+}
+/* ---------- 侧栏 ---------- */
+.sidebar {
+  position: fixed; top: 0; left: 0; width: 268px; height: 100vh;
+  overflow-y: auto; background: #f7f9fb; border-right: 1px solid #e2e8ef;
+  padding: 22px 0 40px;
+}
+.sidebar .brand {
+  padding: 0 18px 14px; margin-bottom: 8px; border-bottom: 1px solid #e2e8ef;
+  font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.5;
+}
+.sidebar .brand span { display: block; font-size: 12px; font-weight: 400; color: #8a97a6; margin-top: 3px; }
+.sidebar ol { list-style: none; margin: 0; padding: 0; counter-reset: doc; }
+.sidebar li { counter-increment: doc; }
+.sidebar a {
+  display: block; padding: 8px 18px 8px 34px; position: relative;
+  font-size: 13.5px; color: #33485c; text-decoration: none;
+  border-left: 3px solid transparent; line-height: 1.5;
+}
+.sidebar a::before {
+  content: counter(doc, decimal-leading-zero);
+  position: absolute; left: 12px; top: 8px;
+  font-size: 11px; color: #a9b6c4; font-variant-numeric: tabular-nums;
+}
+.sidebar a:hover { background: #eef3f8; color: var(--ink); }
+.sidebar a.active {
+  background: #e6eef6; border-left-color: var(--ink);
+  color: var(--ink); font-weight: 700;
+}
+.sidebar .tip {
+  margin: 18px 18px 0; padding-top: 14px; border-top: 1px solid #e2e8ef;
+  font-size: 11.5px; color: #97a4b2; line-height: 1.7;
+}
+/* ---------- 正文 ---------- */
+main { margin-left: 268px; padding: 46px 64px 100px; max-width: 980px; }
+.doc { padding-bottom: 46px; margin-bottom: 46px; border-bottom: 3px double #e4eaf1; }
+.doc:last-child { border-bottom: none; }
+h1, h2, h3, h4 { line-height: 1.4; }
+h1 {
+  font-size: 25px; color: var(--ink); margin: 0 0 20px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--ink); letter-spacing: .5px;
+}
+h2 {
+  font-size: 19px; color: var(--ink); margin: 34px 0 12px;
+  padding-left: 10px; border-left: 4px solid var(--ink);
+}
+h3 { font-size: 16.5px; color: #24384d; margin: 26px 0 10px; }
+h4 { font-size: 15px; color: #46586b; margin: 20px 0 8px; }
+p { margin: 10px 0; }
+strong { color: #17293b; }
+a { color: var(--ink); }
+code {
+  background: #f0f3f7; padding: 1px 5px; border-radius: 3px;
+  font-family: Consolas, "Courier New", monospace; font-size: .88em; color: #b2435a;
+}
+pre {
+  background: #f6f8fa; color: #24313d; border: 1px solid #e1e6ec;
+  border-left: 4px solid #9fb6cc; border-radius: 0 6px 6px 0;
+  padding: 12px 16px; overflow-x: auto; margin: 14px 0;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13.5px; line-height: 1.7;
+}
+pre code { background: none; color: inherit; padding: 0; font-size: 13.5px; }
+blockquote {
+  margin: 14px 0; padding: 11px 18px;
+  background: #f4f8fc; border-left: 4px solid #7ea8d0; border-radius: 0 5px 5px 0;
+  color: #3c4c5d;
+}
+blockquote p { margin: 5px 0; }
+table {
+  border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px;
+  box-shadow: 0 0 0 1px #e0e7ef;
+}
+th, td { border: 1px solid #e0e7ef; padding: 7px 11px; text-align: left; vertical-align: top; }
+th { background: #eef3f8; color: #24384d; font-weight: 700; }
+tbody tr:nth-child(even) { background: #fafcfe; }
+img {
+  max-width: 100%; height: auto; display: block; margin: 16px auto;
+  border: 1px solid #e3e9f0; border-radius: 7px;
+}
+hr { border: none; border-top: 1px dashed #d5dde5; margin: 30px 0; }
+ul, ol { padding-left: 26px; }
+li { margin: 5px 0; }
+.totop {
+  position: fixed; right: 26px; bottom: 26px; width: 44px; height: 44px;
+  border-radius: 50%; background: var(--ink); color: #fff; text-decoration: none;
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+  box-shadow: 0 3px 12px rgba(30,77,123,.32); opacity: .82;
+}
+.totop:hover { opacity: 1; }
+@media print {
+  .sidebar, .totop { display: none; }
+  main { margin: 0; padding: 0; max-width: none; }
+  .doc { page-break-after: always; border-bottom: none; }
+  pre { background: #f6f8fa; color: #24313d; }
+}
+</style>
+</head>
+<body>
+<nav class="sidebar">
+<div class="brand">数据分析 · 面试备战台<span>七天冲刺 · 数字卡 · 追问 16 条 · 概念自测</span></div>
+<ol><li><a href="#sec-01">0. 先回答你的疑问：是「概念不够」吗？</a></li><li><a href="#sec-02">1. 材料地图：五份材料，各管一件事</a></li><li><a href="#sec-03">2. 七天冲刺表（每天 60–90 分钟）</a></li><li><a href="#sec-04">3. 讲述稿（三档，都要能脱稿）</a></li><li><a href="#sec-05">4. 数字卡（按「面试官会怎么问」分组，不按 S1–S10）</a></li><li><a href="#sec-06">5. 追问 16 条（能答出前 9 条就及格，后 7 条是拉分项）</a></li><li><a href="#sec-07">6. 概念闭卷自测 20 题（先合上材料答，再往下翻答案）</a></li><li><a href="#sec-08">7. 五个概念洞的补课（每个 5 句话）</a></li><li><a href="#sec-09">8. 今晚 30 分钟就做这一件事</a></li></ol>
+</nav>
+<main>
+<h1 id="-">数据分析 · 面试备战台</h1><blockquote><p>这份文件只解决一个问题：<strong>材料太多，不知道现在该做什么。</strong><br />
+用法：从第 2 节的「七天冲刺表」开始。<strong>不要再通读那 10 篇分析文档。</strong></p></blockquote><hr /><h2 id="sec-01">0. 先回答你的疑问：是「概念不够」吗？</h2><p>部分是，但方向和你想的不一样。我把项目用到的概念和你的复习笔记对了一遍，结果是：</p><table><thead><tr class="header"><th>概念</th><th>项目里在哪用了</th><th>你的笔记里出现过几次</th></tr></thead><tbody><tr class="odd"><td><strong>效应量（Cramér's V）</strong></td><td>S6 的核心论证</td><td><strong>0</strong></td></tr><tr class="even"><td><strong>基础概率（基准率）</strong></td><td>S8「0.88% 低于 1.17%」</td><td><strong>0</strong></td></tr><tr class="odd"><td><strong>选择效应</strong></td><td>局限声明「加购的人本来就不是一批人」</td><td><strong>0</strong></td></tr><tr class="even"><td><strong>反事实 / 增量</strong></td><td>S9「提升幅度是我拍的」</td><td><strong>0</strong></td></tr><tr class="odd"><td><strong>MDE（最小可检测效应）</strong></td><td>简历能力栏写了 A/B</td><td><strong>0</strong></td></tr><tr class="even"><td>口径 / 留存 / 漏斗 / 指标树 / 置信区间 / 辛普森悖论</td><td>全项目</td><td>覆盖完整 ✅</td></tr></tbody></table><p><strong>结论：洞只有 5 个，而且全在同一片地方——「统计结论怎么变成决策」，不是基础知识不行。</strong> 这 5 个补起来一共 30 分钟（见第 7 节）。</p><h3>那「头晕」到底是怎么来的</h3><p>三个原因，都不是你的问题：</p><ol><li><strong>10 篇文档是按「分析时间线」写的，不是按「面试问法」写的。</strong> S1→S10 是工作日志的顺序。面试官不会按这个顺序问，你按这个顺序读，等于把一条直线硬塞进脑子。</li><li><strong>你一直在「读」，很少「说」。</strong> 读是被动输入，面试是主动输出。更糟的是自测题带着答案——翻一眼就以为会了，其实没测到。</li><li><strong>没有优先级和进度。</strong> 手上材料加起来接近 20 万字，没有入口，所以每次打开都从「我该看哪个」开始，而不是从「我今天要做完什么」开始。</li></ol><p><strong>所以这份文件的结构就是反过来：先告诉你每天做什么，再把最该会的东西直接放在这里。</strong></p><hr /><h2 id="sec-02">1. 材料地图：五份材料，各管一件事</h2><table><thead><tr class="header"><th>材料</th><th>什么时候用</th><th>明确不要做的事</th></tr></thead><tbody><tr class="odd"><td><strong>本文件</strong></td><td>每天开始前看一眼今天做什么</td><td>—</td></tr><tr class="even"><td><code>项目复盘与面试可背页.md</code></td><td>项目主材料，完整版讲述稿和追问答案在这里</td><td>不要逐字背，要能用自己的话讲</td></tr><tr class="odd"><td><code>00_口径与数据说明.md</code></td><td>被追问「这个数怎么定义的」时查</td><td>—</td></tr><tr class="even"><td><code>分析文档/01–10</code></td><td><strong>只在被追问某个具体数字怎么算出来时，翻对应的那一篇</strong></td><td><strong>不要通读，不要按顺序读</strong></td></tr><tr class="odd"><td><code>数据分析专项/02–09</code></td><td>补概念，按需查</td><td>不要从头学到尾</td></tr></tbody></table><hr /><h2 id="sec-03">2. 七天冲刺表（每天 60–90 分钟）</h2><table><thead><tr class="header"><th>天</th><th>做什么</th><th>验收标准（做不到就重来）</th></tr></thead><tbody><tr class="odd"><td><strong>D1</strong></td><td>讲 30 秒版和 2 分钟版，手机录音，听回放</td><td>两版都不看稿讲完，不卡壳、不「嗯」超过 3 次</td></tr><tr class="even"><td><strong>D2</strong></td><td>数字卡 A + B（主线）</td><td>12 个数字张口就来</td></tr><tr class="odd"><td><strong>D3</strong></td><td>数字卡 C + D + E（反常识 / 统计 / 边界）</td><td>每个数字都能补一句「这说明什么」</td></tr><tr class="even"><td><strong>D4</strong></td><td>追问 ⓪①②③ 各讲 1 分钟</td><td>能脱稿，且能说出「我为什么这么选」</td></tr><tr class="odd"><td><strong>D5</strong></td><td>追问 ④⑤⑥⑦⑧ 各讲 1 分钟</td><td>同上</td></tr><tr class="even"><td><strong>D6</strong></td><td>闭卷做第 6 节的 20 道自测</td><td>≥ 16 题能答，错题回第 7 节补</td></tr><tr class="odd"><td><strong>D7</strong></td><td>全真模拟：对镜头讲 5 分钟 + 随机抽 3 个追问</td><td>全程不看稿</td></tr></tbody></table><blockquote><p><strong>每天只做当天那一格。</strong> 做完就停，不要顺手再读两篇文档——那正是让你头晕的动作。</p></blockquote><hr /><h2 id="sec-04">3. 讲述稿（三档，都要能脱稿）</h2><h3>30 秒版（面试开场，必须背到条件反射）</h3><blockquote><p>「我用淘宝 1000 万行用户行为日志做了一次交易漏斗分析。<strong>最重要的发现不是查到了什么，而是有三条听起来很对的常识被数据推翻了</strong>：重度用户拿走 68% 的流量却只产出 53% 的成交；加购之后下一步成交的概率只有 0.88%，比随机一个非购买动作的平均 1.17% 还低；晚上加购最多，但那批人的成交率最低。顺着最后一条做了一步召回测算，算出了名单该发给谁、什么时候发。」</p></blockquote><h3 id="-">2 分钟版（主线 + 一个反常识）</h3><blockquote><p>「……浏览到加购 67.17%、加购到购买 64.22%，<strong>两步只差 2.95 个百分点，没有卡点</strong>。而且数据里 58% 的用户有购买行为，真实电商只有个位数——<strong>所以这批人是被筛过的活跃用户集，我全程只讲相对结构，不外推绝对水平，这件事我选择主动讲出来。</strong></p><p>卡点找不到，我把问题换掉了：不问『哪一步漏人』，问『购物车到底意味着什么』。查出来三个数：加购过的人里 64.25% 最终买了东西，但按商品算，<strong>加进购物车的 39 万件里只有 6.21% 被同一个人买走</strong>；加购带来的成交 <strong>78.48% 发生在会话结束之后</strong>。所以购物车不是待付款清单，是意向标记——『在加购当下催单』这个常见方向是错的。」</p></blockquote><h3>5 分钟版（加上转向过程和边界声明）</h3><p>在 2 分钟版的基础上，按顺序补三块，<strong>顺序不能乱</strong>：</p><ol><li><strong>转向的四步</strong>（详见追问⓪）：原问题问了也答了 → 答案没法用 → 触发点是一个具体的反常（71.87% 掉到 6.47%）→ 新老问题是同一格的两层。</li><li><strong>数据质量那一段</strong>：算留存时得到「第 7 天回访率比第 1 天还高」，顺着查出 12-02 的活跃覆盖率从 72~75% 跳到 98.19%，排除限时活动和拉新后剔除。</li><li><strong>边界声明</strong>：这份数据没有金额字段，所以只用件数和人数，<strong>不给 GMV、不给 ROI</strong>；那几档提升幅度是我拍的，要 A/B 才能验证。</li></ol><hr /><h2 id="sec-05">4. 数字卡（按「面试官会怎么问」分组，不按 S1–S10）</h2><h3 id="a--">A 卡 · 身份（先答这三个，面试官就知道你做了真活）</h3><table><thead><tr class="header"><th>数字</th><th>值</th></tr></thead><tbody><tr class="odd"><td>全量 / 样本</td><td>1 亿行 → 按用户抽 10% → <strong>10,000,612 行</strong></td></tr><tr class="even"><td>用户数 / 窗口</td><td><strong>99,020 人</strong> / 7 天（11-25 ~ 12-01）</td></tr><tr class="odd"><td>抽样校验</td><td>四类行为占比与全量偏差 <strong>&lt; 0.06 个百分点</strong></td></tr></tbody></table><h3 id="b--">B 卡 · 主线</h3><table><thead><tr class="header"><th>数字</th><th>值</th></tr></thead><tbody><tr class="odd"><td>浏览 → 加购</td><td>98,460 → 66,138（<strong>67.17%</strong>）</td></tr><tr class="even"><td>加购 → 购买</td><td>→ 42,473（<strong>64.22%</strong>）</td></tr><tr class="odd"><td>购买渗透率</td><td><strong>58.04%</strong>（9 天口径 68.05%）</td></tr><tr class="even"><td>加购到购买：人 vs 商品</td><td><strong>64.25%</strong> vs <strong>6.21%</strong></td></tr><tr class="odd"><td>放宽到「买了同类目也算」</td><td>16.2%（没跨数量级 → 排除 SKU 口径解释）</td></tr><tr class="even"><td>纯浏览会话</td><td><strong>66.37%</strong></td></tr></tbody></table><h3 id="c---">C 卡 · 三条反常识 ★ 全项目最值钱的三张牌</h3><table><thead><tr class="header"><th>常识</th><th>数据说的</th></tr></thead><tbody><tr class="odd"><td>① 资源该押给重度用户</td><td>重度拿走 <strong>68.12%</strong> 行为量，只产 <strong>53.11%</strong> 购买量；单位行为产出 <strong>2.02 vs 0.78</strong></td></tr><tr class="even"><td>② 加购是转化扳机</td><td>加购后下一步成交 <strong>0.88% &lt; 基础概率 1.17%</strong></td></tr><tr class="odd"><td>③ 晚上是黄金时段</td><td>加购渗透率 23 点最高（31.21%），但<strong>加购者购买率最低</strong>（38.90%）；双高点在 <strong>10 点</strong></td></tr></tbody></table><blockquote><p>⚠️ <strong>口径提醒</strong>：C 卡第③条的「10 点加购者购买率」，7 天窗口是 <strong>62.60%</strong>，9 天窗口（S3 那篇文档）是 62.81%。<strong>对外一律用 7 天口径：62.60% / 38.90%</strong>，别再引用 62.81% / 39.29%。这是全项目唯一一处两套数并存的地方，别在这里被问倒。</p></blockquote><h3 id="d--">D 卡 · 统计（这一组决定你是「会跑数」还是「会判断」）</h3><table><thead><tr class="header"><th>数字</th><th>值</th><th>它回答什么</th></tr></thead><tbody><tr class="odd"><td>卡方 p 值</td><td>小到打印不出</td><td>只说明「不是偶然」，<strong>没有信息量</strong></td></tr><tr class="even"><td><strong>Cramér's V</strong></td><td><strong>0.1322</strong></td><td>差异有多大 → <strong>弱关联</strong></td></tr><tr class="odd"><td>95% CI 中位宽度</td><td><strong>0.72 个百分点</strong></td><td>「显著」的门槛低得没有决策价值</td></tr><tr class="even"><td><strong>分半复现</strong></td><td><strong>Spearman 0.994</strong>，Top 10 重合 <strong>10/10</strong></td><td>该不该按类目定 KPI → <strong>看这个</strong></td></tr><tr class="odd"><td>配对规模</td><td>61 万「人 × 类目」</td><td>解释 p 值为什么必然极小</td></tr></tbody></table><h3 id="e--">E 卡 · 边界（这些数字<strong>一个都不能越界说</strong>）</h3><table><thead><tr class="header"><th>数字</th><th>值</th></tr></thead><tbody><tr class="odd"><td>沉默加购件</td><td><strong>93.79%</strong>（365,015 / 389,170）</td></tr><tr class="even"><td>D 层（沉默 4 件以上）</td><td><strong>32,942 人（49.51%）握 84.47% 沉默件</strong></td></tr><tr class="odd"><td>站内可触达</td><td><strong>89.21%</strong>（下界）</td></tr><tr class="even"><td>每提升 1 个点</td><td><strong>3,650 件</strong></td></tr><tr class="odd"><td>加购到购买最大档</td><td><strong>6~24 小时 33.08%</strong></td></tr></tbody></table><blockquote><p><strong>越界的三个词：GMV、客单价、ROI。</strong> 数据里没有金额，这三个词一说出口，面试官下一句就是「客单价哪来的」。提升幅度也只能说「我拍的、要 A/B 验证」。</p></blockquote><h3 id="f--">F 卡 · 一句一个（被追问细节时用）</h3><ul><li>回访率：D1 <strong>74.90%</strong> → D3 <strong>73.12%</strong>（三天只掉 1.78 个点）</li><li>一次即走：<strong>54.30%</strong>（观察最久的队列 31.0%）</li><li>跨天重复买同一商品：<strong>1.63%</strong></li><li>会话数：<strong>1,217,569</strong>；有效转移 <strong>6,041,470</strong>（行为位 7,259,039 − 会话数，因为每个会话最后一条没有「下一个」）</li><li>12-02 异常：活跃覆盖率 <strong>72~75% → 98.19%</strong>，9.7 万活跃里只有 <strong>2 个</strong>新面孔</li></ul><hr /><h2 id="sec-06">5. 追问 16 条（能答出前 9 条就及格，后 7 条是拉分项）</h2><table><thead><tr class="header"><th>#</th><th>面试官会问</th><th>一句话骨架</th><th>完整答案在哪</th></tr></thead><tbody><tr class="odd"><td>⓪</td><td>说好找流失卡点，怎么变成研究购物车了？</td><td>四步：问了→没法用→有具体反常→同一格的两层</td><td>复盘 §7-⓪</td></tr><tr class="even"><td>①</td><td>样本怎么抽的？为什么不截前 1000 万行？</td><td>按用户抽；截行=只抽老用户，按行抽=购买被抽没</td><td>复盘 §7-①</td></tr><tr class="odd"><td>②</td><td>为什么把 12-02/12-03 剔了？是不是不好看就删？</td><td>覆盖率跳升 98.19%；排除活动与拉新</td><td>复盘 §7-②</td></tr><tr class="even"><td>③</td><td>58% 的人有购买行为，数据是不是有问题？</td><td>正说明不是全站流量；我只讲相对结构</td><td>复盘 §7-③</td></tr><tr class="odd"><td>④</td><td>加购到购买 64%，那不就该催单吗？</td><td>人的口径 vs 商品的口径，落差就是结论</td><td>复盘 §7-④</td></tr><tr class="even"><td>⑤</td><td>6.21% 是不是因为窗口只有 7 天？</td><td>三口径截断检验：短口径平、长口径掉</td><td>复盘 §7-⑤</td></tr><tr class="odd"><td>⑥</td><td>p 值这么小，你怎么说类目不是关键？</td><td>p 无信息量 → 看 V=0.13 → 用复现性下结论</td><td>复盘 §7-⑥</td></tr><tr class="even"><td>⑦</td><td>复购率是多少？</td><td>先反问口径；报 54.30% 并注明是低估</td><td>复盘 §7-⑦</td></tr><tr class="odd"><td>⑧</td><td>这个项目有什么不足？</td><td>无金额 / 窗口 7 天 / 全是描述性无因果</td><td>复盘 §7-⑧</td></tr><tr class="even"><td>⑨</td><td>你用了什么工具？</td><td>DuckDB + SQL 为主，重的取数不搬内存</td><td>复盘 §7-⑨</td></tr><tr class="odd"><td>⑩</td><td><strong>那收藏呢？为什么没有分析收藏？</strong></td><td>并联路径只能选一条；收藏是加购的弱版本；但两个数我没算</td><td>本文件 §7-⑤</td></tr><tr class="even"><td>⑪</td><td>会话为什么是 30 分钟？这个阈值哪来的？</td><td>我定的，不是数据给的 → 15/30/60 三套阈值对照，结论只挪 4.44 个点</td><td>分析文档 08</td></tr><tr class="odd"><td>⑫</td><td>如果再做一轮，你会做什么？</td><td>补金额字段 / 补收藏的商品级买回率 / 做 A/B</td><td>本文件 §7-⑤</td></tr><tr class="even"><td>⑬</td><td>这套结论给运营，他们会质疑什么？</td><td>「只有件数没有钱，我凭什么排优先级」</td><td>本文件 §4-E 卡</td></tr><tr class="odd"><td>⑭</td><td>这些结论你怎么验证？</td><td>截面结论用分半复现；动作效果只能靠 A/B</td><td>分析文档 06 / 10</td></tr><tr class="even"><td>⑮</td><td>这个项目里你最不确定的一个数是什么？</td><td>6.21%——它受窗口截断影响，干净参照是 7.85%</td><td>分析文档 09</td></tr><tr class="odd"><td>⑯</td><td>如果数据里有金额，你的结论会怎么变？</td><td>从「件数」升级到 GMV 拆解 + ROI 排序</td><td>本文件 §7-④</td></tr></tbody></table><hr /><h2 id="sec-07">6. 概念闭卷自测 20 题（先合上材料答，再往下翻答案）</h2><ol><li>p 值和效应量各自回答什么问题？为什么大样本下 p 值没有信息量？</li><li>Cramér's V = 0.13 是什么量级？它和「差异显著」矛盾吗？</li><li>什么是置信区间？「95% CI 中位宽度 0.72 个百分点」这个数为什么重要？</li><li>「基础概率」是什么？为什么说「0.88% 低于 1.17%」比单说 0.88% 更有说服力？</li><li>什么是选择效应？它和「相关不等于因果」是什么关系？</li><li>什么是反事实？为什么「提升幅度」必须有对照组才能说？</li><li>截断偏差是什么？为什么短口径平、长口径掉就能证明是截断？</li><li>MDE 是什么？为什么实验前要先算样本量？</li><li>复购率按「购买记录数」和「购买天数」算出来差 14 个点，这两个数哪个错？</li><li>为什么说「跨天回购的人买过的商品更多」是废话？（构造重叠）</li><li>效度检查：一个比率出现 171.79%，你先怀疑什么？</li><li><code>COUNT(DISTINCT CASE WHEN 条件 THEN 1 END)</code> 错在哪？</li><li>为什么留存率「D7 比 D1 高」一定是错的？</li><li>分母陷阱：「加购到购买率」的分子能不能用全部购买人数？</li><li>存活者偏差在本项目里对应哪个陷阱？（用户集是筛过的）</li><li>辛普森悖论是什么？举一个本项目里的「分组后结论反转」的例子。</li><li>分层为什么容易造出假结论？什么情况下分层变量和结果变量会重叠？</li><li>样本量足够大时，什么情况下你会说「这个差异不值得做决策」？</li><li>A/B 实验中，为什么要先定指标再定样本量，而不是反过来？</li><li>用一句话说清「口径」为什么比「算法」更容易决定结论对错。</li></ol><p><details><br />
+<summary>参考答案要点（答完再看）</summary></p><ol><li>p 值答「差异会不会是抽样偶然」，效应量答「差异有多大」。61 万配对下，0.1 个点的差异也不可能是偶然，所以 p 必然极小、没有信息量。</li><li>弱关联（0~0.2 属弱）。不矛盾：差异是真的，但类目解释不了多少购买行为。</li><li>区间估计，表示「用这个样本能推出来的真值范围」。中位宽度 0.72pp 意味着随便差 1 个点就「显著」，显著门槛没有决策价值。</li><li>基准率——在没有任何信号时，随便挑一个动作其下一步成交的概率。0.88% &lt; 1.17% 说明「加购之后更容易成交」这个直觉不成立。</li><li>进入比较的两组人本来就不同，不是随机分的。相关不等于因果中最常见的具体形态：加购的人本来决策周期就更长。</li><li>反事实＝「如果不做这件事会怎样」。没有对照组就不知道不做的基线，所以提升幅度无从计算。</li><li>观察窗口太短，晚期事件来不及发生。短口径（如 1 小时内成交率）对每个日期都算得出来、且平稳，说明转化能力没变；只有长口径下滑，说明掉的是观察时间。</li><li>最小可检测效应。样本量决定你能检测出多小的差异；不先算，实验做完了可能根本分辨不出效果。</li><li>两个都不算错，是口径不同。无订单号时都用自然日近似，会保守低估，报的时候要注明。</li><li>因为「购买天数多」和「买过的商品数多」在构造上是同一件事的两面，分组变量和结果变量重叠，算出来的是数学恒等式。</li><li>先怀疑自己的口径，不要怀疑数据。本例正是「把并联当串联」+「分子分母不是同一批人」。</li><li><code>COUNT(DISTINCT 1)</code> 数的常量 1 有几个取值，答案恒为 1。表现为整列变 1、比率变 100%，而且不报错。</li><li>因为留存是随时间单调不增的，反弹说明队列划分或数据口径出了问题（本例是 12-02 覆盖率异常）。</li><li>不能。买的人里有从没加购过的，会被算进分子却不在分母里，比率虚高——漏斗必须严格嵌套。</li><li>进入分析的用户本来就是被筛过的活跃/购买倾向人群，所以绝对水平不可外推。</li><li>整体和分组的结论方向相反。本项目对应：按行为量分层后，「重度用户价值高」和「重度用户单位产出低」同时成立，取决于问总量还是问效率。</li><li>当分层变量和结果变量由同一组数据构造出来时。例：按「行为量」分层，再算「购买量 / 行为量」。</li><li>当差异虽显著但效应量小、且置信区间窄到「任何差异都显著」时——即差异真实但没有决策价值。</li><li>因为样本量由「你想检测多大的效果」倒推。先定样本量等于承认你不知道要检测什么。</li><li>口径决定分子分母是谁、能不能比；口径错了，再对的算法也只是精确地算错。</li></ol><p></details></p><hr /><h2 id="sec-08">7. 五个概念洞的补课（每个 5 句话）</h2><h3 id="cramers-v">① 效应量（Cramér's V）</h3><p>p 值管「有没有差异」，效应量管「差异有多大」。卡方检验后要看 Cramér's V：0~0.2 弱、0.2~0.4 中、0.4 以上强。本项目 V = 0.1322，所以「类目差异极其显著」和「类目解释不了多少东西」可以同时成立。面试里的说法：<strong>样本量一大，p 值就没有决策价值，该看效应量和置信区间。</strong></p><h3>② 基础概率（基准率）</h3><p>不做任何分析时，随机挑一个动作、它下一步成交的概率是多少——本项目算出来是 1.17%。有了这个基准，「加购之后成交 0.88%」才有意义：它不是「转化率还不错」，它<strong>比什么信号都没有还低</strong>。基准率是所有「A 比 B 高/低」类结论的地基。</p><h3>③ 选择效应</h3><p>被比较的两组人<strong>本来就不是随机分的</strong>。本项目里「加购的人沉默率高」不是加购导致的——加购的人本来决策周期就更长。所以全项目只说描述性结论，不说因果。面试里主动提这个，是加分项。</p><h3>④ 反事实与增量</h3><p>「换个做法会多多少」＝增量，它需要一个反事实：不做会怎样。本项目从原理上测不出——沉默加购组的成交率按定义就是 0，没有对照组。<strong>所以正确回答是「这个数我算不出来，要 A/B」</strong>，而不是编一个百分比。</p><h3 id="mde-">⑤ MDE 与样本量</h3><p>先决定「我想检测出多大的提升」，再由它倒推需要多少样本——这个「多大的提升」就是 MDE。不先算，实验可能做完才发现分辨不出效果。<strong>面试里被问 A/B，第一句应该是「先定指标和 MDE」，不是「分两组跑」</strong>。</p><h3>⑥ 顺带补一个你问过的问题：收藏为什么掉线</h3><p>收藏在 S1 有占比、S2 当过反面教材、S7/S8 里以合并口径出现，<strong>S3 之后就没有单独一节</strong>。原因：收藏和加购是<strong>并联的两条意向路径</strong>，主线漏斗只能选一条，选了覆盖人数多一倍的加购；而 S8 的转移矩阵显示收藏的下一步成交率只有 <strong>0.61%</strong>（加购是 0.88%），两者之间几乎不互相转换（1.78% / 0.94%）——<strong>收藏是加购的一个更弱版本。</strong></p><p><strong>但有两个数我从没算过，这是真空：</strong> 收藏者的人级转化率、收藏商品被同一人买回的概率。被问到就直接承认，并说「如果这两个数和加购差得远，我这个取舍要重新讨论」——比被问倒强。</p><hr /><h2 id="sec-09">8. 今晚 30 分钟就做这一件事</h2><p>打开手机录音，讲<strong>第 3 节的 30 秒版</strong>，讲三遍，听一遍回放。</p><p>判断标准只有一条：<strong>不看稿、不卡壳、不「嗯」超过 3 次。</strong></p><p>做到了，明天做 D1 剩下的部分（2 分钟版）。做不到，就再讲三遍——<strong>这一件小事比你再读两篇分析文档有用得多。</strong></p>
+
+</main>
+<a class="totop" href="#top">↑</a>
+<script>
+var links = Array.prototype.slice.call(document.querySelectorAll('.sidebar a'));
+var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+function sync() {
+  var best = 0, cutoff = window.scrollY + window.innerHeight * 0.28;
+  for (var i = 0; i < targets.length; i++) {
+    if (targets[i] && targets[i].offsetTop <= cutoff) best = i;
+  }
+  links.forEach(function (a, i) { a.classList.toggle('active', i === best); });
+}
+window.addEventListener('scroll', sync);
+window.addEventListener('resize', sync);
+sync();
+</script>
+</body>
+</html>
